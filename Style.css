@@ -1,0 +1,1680 @@
+
+/* =========================================
+   1. GLOBAL PAGE DESIGN
+   ========================================= */
+
+:root {
+    --purple-dark: #23085C;
+    --purple-main: #5024AE;
+    --purple-light: #7045D6;
+    --green: #7DCE3A;
+    --green-bright: #6CF03A;
+    --cyan: #00FFFF;
+    --cyan-soft: #8CFBFF;
+    --white: #FFFFFF;
+    --text-muted: #E1D8FF;
+
+    --card-bg: rgba(35, 8, 92, 0.86);
+    --card-border: rgba(0, 255, 255, 0.3);
+
+    --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    --glow: 0 0 18px rgba(0, 255, 255, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+
+    background-image:
+        linear-gradient(
+            rgba(20, 5, 55, 0.45),
+            rgba(15, 4, 45, 0.65)
+        ),
+        url("images/pic2.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: var(--white);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+/* Highlight selected text */
+
+::selection {
+    background-color: var(--cyan);
+    color: var(--purple-dark);
+    text-shadow: none;
+}
+
+/* =========================================
+   2. MAIN CONTENT BOX
+   ========================================= */
+
+.rounded2 {
+    width: 92%;
+    max-width: 1500px;
+    min-height: 500px;
+
+    margin: 25px auto;
+    padding: clamp(20px, 4vw, 40px);
+
+    background: linear-gradient(
+        145deg,
+        rgba(35, 8, 92, 0.94),
+        rgba(42, 12, 100, 0.88)
+    );
+
+    border: 1px solid rgba(0, 255, 255, 0.55);
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    color: var(--green);
+    font-size: 19px;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    animation: fade-in 0.7s ease both;
+}
+
+.rounded2 a {
+    color: var(--cyan-soft);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 0.25s ease;
+}
+
+.rounded2 a:hover {
+    color: var(--green-bright);
+}
+
+.rounded2 hr {
+    width: 100%;
+    margin: 25px auto;
+
+    border: none;
+    border-top: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+/* =========================================
+   3. FONTS AND TEXT STYLES
+   ========================================= */
+
+.fancy {
+    font-family: "URW Chancery", cursive;
+    font-size: 24px;
+}
+
+.fancy2 {
+    font-family: Impact, sans-serif;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.fancy3 {
+    font-family: "URW Chancery", cursive;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.15;
+    color: var(--green-bright);
+
+    text-shadow:
+        0 0 10px rgba(108, 240, 58, 0.25),
+        2px 3px 5px rgba(0, 0, 0, 0.65);
+}
+
+.colorful {
+    font-family: "URW Chancery", cursive;
+    font-size: 24px;
+    color: var(--cyan-soft);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.title-link {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.title-link:hover {
+    color: var(--cyan);
+}
+
+/* =========================================
+   4. IMAGE LAYOUTS
+   ========================================= */
+
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.gallery {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+
+    margin: 20px auto 30px;
+    text-align: center;
+}
+
+.gallery img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+
+    border: 2px solid var(--cyan);
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--green-bright);
+    box-shadow: var(--glow), var(--shadow);
+}
+
+/* Circular profile image */
+
+.banner img {
+    display: block;
+
+    width: 300px;
+    height: 300px;
+    max-width: 100%;
+
+    margin: 10px auto 25px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border: 4px solid var(--cyan);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 7px rgba(0, 255, 255, 0.1),
+        0 0 30px rgba(0, 255, 255, 0.22),
+        var(--shadow);
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.banner img:hover {
+    transform: scale(1.035);
+    border-color: var(--green-bright);
+
+    box-shadow:
+        0 0 0 8px rgba(108, 240, 58, 0.1),
+        0 0 35px rgba(0, 255, 255, 0.3);
+}
+
+.top-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.page-row img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.page-row img:hover {
+    transform: scale(1.025);
+}
+
+/* Personal information picture gallery */
+
+.horizontal-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 22px;
+
+    margin: 30px auto;
+}
+
+.horizontal-row img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+
+    border-radius: 18px;
+    border: 2px solid var(--cyan);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.horizontal-row img:hover {
+    transform: translateY(-5px);
+    border-color: var(--green-bright);
+}
+
+
+/* =========================================
+   5. NAVIGATION BUTTONS
+   ========================================= */
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    width: fit-content;
+    max-width: 100%;
+
+    padding: 14px 18px;
+    margin: 15px auto 30px;
+
+    position: sticky;
+    top: 12px;
+    z-index: 100;
+
+    background: rgba(35, 8, 92, 0.94);
+
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.nav button {
+    padding: 12px 18px;
+
+    background: var(--purple-main);
+    color: var(--white);
+
+    border: 1px solid rgba(0, 255, 255, 0.65);
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+
+    cursor: pointer;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Temporary glow when hovering */
+.nav button:hover {
+    background: #6339C5;
+    color: var(--white);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0, 255, 255, 0.65),
+        0 0 30px rgba(0, 255, 255, 0.3);
+}
+
+/* Persistent glow on the selected page */
+.nav button.active {
+    background: var(--purple-main);
+    color: var(--white);
+
+    border-color: var(--cyan);
+
+    box-shadow:
+        0 0 8px var(--cyan),
+        0 0 18px rgba(0, 255, 255, 0.65),
+        0 0 30px rgba(0, 255, 255, 0.3);
+
+    cursor: default;
+    transform: none;
+}
+
+/* Keyboard accessibility */
+.nav button:focus-visible {
+    outline: 3px solid var(--green-bright);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   6. NAME TEXT
+   ========================================= */
+
+.trai {
+    text-align: center;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: bold;
+
+    margin: 25px auto;
+
+    color: var(--white);
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   7. HOBBIES SECTION
+   ========================================= */
+
+.hobbies-title {
+    text-align: center;
+    color: var(--green-bright);
+
+    font-size: clamp(25px, 3vw, 36px);
+    letter-spacing: 1.5px;
+
+    margin: 15px auto 30px;
+
+    text-shadow: 0 0 15px rgba(108, 240, 58, 0.15);
+}
+
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.hobby-card {
+    min-width: 0;
+    padding: 28px 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(70, 35, 135, 0.88),
+        rgba(39, 12, 95, 0.92)
+    );
+
+    border: 1px solid rgba(112, 69, 214, 0.8);
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.17);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.hobby-card:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--cyan);
+
+    background: linear-gradient(
+        145deg,
+        rgba(90, 45, 170, 0.97),
+        rgba(44, 13, 105, 0.97)
+    );
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.25),
+        0 0 16px rgba(0, 255, 255, 0.12);
+}
+
+.hobby-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 16px;
+
+    background: rgba(0, 255, 255, 0.1);
+
+    border: 1px solid rgba(0, 255, 255, 0.55);
+    border-radius: 50%;
+
+    color: var(--cyan);
+    font-size: 31px;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.hobby-card:hover .hobby-icon {
+    transform: scale(1.08) rotate(-4deg);
+
+    background: rgba(0, 255, 255, 0.18);
+    color: var(--green-bright);
+}
+
+.hobby-card h3 {
+    margin: 10px 0;
+
+    color: var(--green-bright);
+    font-size: 21px;
+}
+
+.hobby-card p {
+    margin: 0;
+
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   8. PERSONALITY SECTION
+   ========================================= */
+
+.personality-title {
+    text-align: center;
+    color: var(--green-bright);
+
+    font-size: clamp(25px, 3vw, 36px);
+    letter-spacing: 1.5px;
+
+    margin: 15px auto 30px;
+}
+
+.personality-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.trait-card {
+    min-width: 0;
+    padding: 28px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(70, 35, 135, 0.88),
+        rgba(39, 12, 95, 0.92)
+    );
+
+    border: 1px solid rgba(112, 69, 214, 0.8);
+    border-radius: 20px;
+
+    text-align: left;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.17);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.trait-card:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--cyan);
+
+    background: linear-gradient(
+        145deg,
+        rgba(90, 45, 170, 0.97),
+        rgba(44, 13, 105, 0.97)
+    );
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.25),
+        0 0 16px rgba(0, 255, 255, 0.12);
+}
+
+.trait-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 50px;
+    min-height: 50px;
+
+    margin-bottom: 10px;
+
+    color: var(--cyan);
+    font-size: 32px;
+}
+
+.trait-card h3 {
+    margin: 8px 0 12px;
+
+    color: var(--green-bright);
+    font-size: 22px;
+}
+
+.trait-card p {
+    margin: 0;
+
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+
+/* =========================================
+   10. ANIMATIONS
+   ========================================= */
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Respect reduced-motion accessibility settings */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto ;
+        animation-duration: 0.01ms ;
+        animation-iteration-count: 1 ;
+        transition-duration: 0.01ms ;
+    }
+}
+
+
+/* =========================================
+   INDIVIDUAL HTML PAGE BACKGROUNDS
+   ========================================= */
+
+/* Shared background settings for every page */
+body.home-page,
+body.info-page,
+body.habits-page,
+body.personality-page,
+body.history-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* HOME PAGE */
+body.home-page {
+    background-image:
+        linear-gradient(rgba(25, 5, 65, 0.45),
+                        rgba(25, 5, 65, 0.65)),
+        url("images/home-bg.jpg");
+}
+
+/* PERSONAL INFORMATION PAGE */
+body.info-page {
+    background-image:
+        linear-gradient(rgba(25, 5, 65, 0.45),
+                        rgba(25, 5, 65, 0.65)),
+        url("images/info-bg.jpg");
+}
+
+/* HOBBIES PAGE */
+body.habits-page {
+    background-image:
+        linear-gradient(rgba(25, 5, 65, 0.45),
+                        rgba(25, 5, 65, 0.65)),
+        url("images/habits-bg.jpg");
+}
+
+/* PERSONALITY PAGE */
+body.personality-page {
+    background-image:
+        linear-gradient(rgba(25, 5, 65, 0.45),
+                        rgba(25, 5, 65, 0.65)),
+        url("images/personality-bg.jpg");
+}
+
+/* HISTORY PAGE */
+body.history-page {
+    background-image:
+        linear-gradient(rgba(25, 5, 65, 0.45),
+                        rgba(25, 5, 65, 0.65)),
+        url("images/history-bg.jpg");
+}
+
+/* Mobile background adjustment */
+@media (max-width: 600px) {
+    body.home-page,
+    body.info-page,
+    body.habits-page,
+    body.personality-page,
+    body.history-page {
+        background-attachment: scroll;
+    }
+}
+
+/* =========================================
+   MOVING VIDEO BACKGROUND - HABITS PAGE
+   ========================================= */
+
+body.habits-page {
+    position: relative;
+    isolation: isolate;
+    background: transparent;
+    min-height: 100vh;
+}
+
+/* Video fills the screen */
+body.habits-page .video-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Dark overlay above the video */
+body.habits-page .video-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(25, 5, 65, 0.55);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Keep the background behind the page content */
+body.habits-page > *:not(.video-background):not(.video-overlay) {
+    position: relative;
+}
+
+/* Mobile video adjustment */
+@media (max-width: 600px) {
+    body.habits-page .video-background {
+        object-position: center;
+    }
+}
+
+
+/* =========================================
+   INFORMATION PAGE - VIDEO BACKGROUND
+   ========================================= */
+
+body.info-page {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* Video background */
+body.info-page .video-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Dark overlay */
+body.info-page .video-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(25, 5, 65, 0.55);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+    body.info-page .video-background {
+        object-position: center;
+    }
+}
+
+/* =========================================
+   INFORMATION PAGE - PERSONALITY BACKGROUND
+   ========================================= */
+
+body.personality-page {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* Video background */
+body.personality-page .video-background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Dark overlay */
+body.personality-page .video-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(25, 5, 65, 0.55);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Mobile adjustment */
+@media (max-width: 600px) {
+    body.personality-page .video-background {
+        object-position: center;
+    }
+}
+
+
+/* =========================================
+   8. HISTORY SECTION
+   ========================================= */
+
+.history-title {
+    text-align: center;
+    color: var(--green-bright);
+
+    font-size: clamp(25px, 3vw, 36px);
+    letter-spacing: 1.5px;
+
+    margin: 15px auto 30px;
+}
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.trait-card {
+    min-width: 0;
+    padding: 28px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(70, 35, 135, 0.88),
+        rgba(39, 12, 95, 0.92)
+    );
+
+    border: 1px solid rgba(112, 69, 214, 0.8);
+    border-radius: 20px;
+
+    text-align: left;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.17);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.trait-card:hover {
+    transform: translateY(-6px);
+
+    border-color: var(--cyan);
+
+    background: linear-gradient(
+        145deg,
+        rgba(90, 45, 170, 0.97),
+        rgba(44, 13, 105, 0.97)
+    );
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.25),
+        0 0 16px rgba(0, 255, 255, 0.12);
+}
+
+.trait-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 50px;
+    min-height: 50px;
+
+    margin-bottom: 10px;
+
+    color: var(--cyan);
+    font-size: 32px;
+}
+
+.trait-card h3 {
+    margin: 8px 0 12px;
+
+    color: var(--green-bright);
+    font-size: 22px;
+}
+
+.trait-card p {
+    margin: 0;
+
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* =========================================================
+   UN MONTH - HISTORY PAGE
+   ========================================================= */
+
+
+/* Main poster */
+
+.un-poster {
+    position: relative;
+
+    width: 96%;
+    max-width: 1400px;
+
+    min-height: 760px;
+
+    margin: 30px auto 70px;
+
+    padding: 45px 35px 55px;
+
+    overflow: hidden;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 255, 255, 0.08),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(20, 5, 55, 0.93),
+            rgba(35, 8, 92, 0.88),
+            rgba(12, 20, 65, 0.93)
+        );
+
+    border:
+        1px solid rgba(0, 255, 255, 0.55);
+
+    border-radius:
+        28px;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.40),
+        0 0 30px rgba(0, 255, 255, 0.08);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+
+/* Cyber grid */
+
+.un-poster::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 255, 255, 0.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 255, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+}
+
+
+/* Purple glow */
+
+.un-poster::after {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 40%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(112, 69, 214, 0.22),
+            transparent 70%
+        );
+}
+
+
+/* Keep contents above effects */
+
+.un-poster > * {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   TOP NEON LINE
+   ========================================================= */
+
+.un-top-line {
+    width: 160px;
+    height: 3px;
+
+    margin: 0 auto 25px;
+
+    background:
+        #00ffff;
+
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px rgba(0, 255, 255, 0.70);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.un-heading {
+    position: absolute;
+
+    top: 65px;
+    left: 50%;
+
+    z-index: 5;
+
+    width: 430px;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+}
+
+
+.un-small-title {
+    margin: 0 0 5px;
+
+    color:
+        #8cfbff;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        6px;
+}
+
+
+.un-heading h1 {
+    margin: 0;
+
+    color:
+        #ffffff;
+
+    font-family:
+        Impact,
+        "Arial Black",
+        sans-serif;
+
+    font-size:
+        clamp(55px, 7vw, 95px);
+
+    line-height:
+        1;
+
+    letter-spacing:
+        7px;
+
+    text-shadow:
+        3px 0 #00ffff,
+        -3px 0 #7045d6,
+        0 0 18px rgba(0, 255, 255, 0.45);
+}
+
+
+.un-subtitle {
+    margin:
+        12px 0 0;
+
+    color:
+        #7dce3a;
+
+    font-size:
+        13px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        3px;
+}
+
+
+/* =========================================================
+   FLAG AREA
+   ========================================================= */
+
+.flag-layout {
+    position: relative;
+
+    width: 100%;
+    height: 610px;
+
+    margin-top: 20px;
+}
+
+
+/* =========================================================
+   COUNTRY
+   ========================================================= */
+
+.country-card {
+    position: absolute;
+
+    width: 250px;
+
+    text-align: center;
+
+    transition:
+        transform 0.30s ease;
+}
+
+
+.country-card:hover {
+    transform:
+        translateY(-8px);
+}
+
+
+/* =========================================================
+   CIRCULAR FLAG
+   ========================================================= */
+
+.flag-circle {
+    position: relative;
+
+    width: 175px;
+    height: 175px;
+
+    margin: 0 auto 17px;
+
+    padding: 7px;
+
+    overflow: hidden;
+
+    border:
+        3px solid #00ffff;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(5, 8, 30, 0.90);
+
+    box-shadow:
+        0 0 0 5px rgba(0, 255, 255, 0.10),
+        0 0 20px rgba(0, 255, 255, 0.35),
+        0 15px 30px rgba(0, 0, 0, 0.40);
+
+    transition:
+        border-color 0.30s ease,
+        box-shadow 0.30s ease,
+        transform 0.30s ease;
+}
+
+
+.flag-circle::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    z-index: 2;
+
+    border:
+        1px solid rgba(125, 206, 58, 0.65);
+
+    border-radius:
+        50%;
+
+    pointer-events: none;
+}
+
+
+.flag-circle img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius:
+        50%;
+}
+
+
+.country-card:hover .flag-circle {
+    transform:
+        scale(1.05);
+
+    border-color:
+        #6cf03a;
+
+    box-shadow:
+        0 0 0 6px rgba(108, 240, 58, 0.10),
+        0 0 25px rgba(108, 240, 58, 0.45),
+        0 18px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   COUNTRY TEXT
+   ========================================================= */
+
+.country-information h2 {
+    margin:
+        0 0 4px;
+
+    color:
+        #ffffff;
+
+    font-size:
+        19px;
+
+    line-height:
+        1.2;
+
+    letter-spacing:
+        1px;
+
+    text-shadow:
+        0 0 8px rgba(0, 255, 255, 0.30);
+}
+
+
+.country-information p {
+    margin: 0;
+
+    color:
+        #8cfbff;
+
+    font-size:
+        14px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1px;
+}
+
+
+/* =========================================================
+   FLAG POSITIONS
+   This creates the curved arrangement
+   ========================================================= */
+
+
+/* United States - upper left */
+
+.country-usa {
+    top: 15px;
+    left: 2%;
+}
+
+
+/* Uruguay - upper right */
+
+.country-uruguay {
+    top: 15px;
+    right: 2%;
+}
+
+
+/* France - lower left */
+
+.country-france {
+    top: 315px;
+    left: 16%;
+}
+
+
+/* Dominican Republic - lowest center */
+
+.country-dominican {
+    top: 370px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+}
+
+
+.country-dominican:hover {
+    transform:
+        translateX(-50%)
+        translateY(-8px);
+}
+
+
+/* Nicaragua - lower right */
+
+.country-nicaragua {
+    top: 315px;
+    right: 16%;
+}
+
+
+/* =========================================================
+   BOTTOM DECORATION
+   ========================================================= */
+
+.un-bottom-decoration {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 15px;
+}
+
+
+.un-bottom-decoration span {
+    width: 100px;
+    height: 1px;
+
+    background:
+        #00ffff;
+
+    box-shadow:
+        0 0 8px #00ffff;
+}
+
+
+.un-bottom-decoration p {
+    margin: 0;
+
+    color:
+        #7dce3a;
+
+    font-size:
+        12px;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        3px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .un-poster {
+        min-height:
+            auto;
+
+        padding:
+            35px 20px;
+    }
+
+
+    .un-heading {
+        position:
+            relative;
+
+        top:
+            auto;
+
+        left:
+            auto;
+
+        width:
+            100%;
+
+        margin-bottom:
+            40px;
+
+        transform:
+            none;
+    }
+
+
+    .flag-layout {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            40px 20px;
+
+        height:
+            auto;
+    }
+
+
+    .country-card,
+    .country-usa,
+    .country-uruguay,
+    .country-france,
+    .country-dominican,
+    .country-nicaragua {
+        position:
+            relative;
+
+        top:
+            auto;
+
+        left:
+            auto;
+
+        right:
+            auto;
+
+        width:
+            100%;
+
+        transform:
+            none;
+    }
+
+
+    .country-dominican:hover {
+        transform:
+            translateY(-8px);
+    }
+
+
+    .country-nicaragua {
+        grid-column:
+            1 / -1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .un-poster {
+        width:
+            100%;
+
+        padding:
+            30px 15px;
+
+        border-radius:
+            20px;
+    }
+
+
+    .un-heading h1 {
+        font-size:
+            48px;
+
+        letter-spacing:
+            4px;
+    }
+
+
+    .un-small-title {
+        letter-spacing:
+            3px;
+    }
+
+
+    .flag-layout {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            45px;
+    }
+
+
+    .country-nicaragua {
+        grid-column:
+            auto;
+    }
+
+
+    .flag-circle {
+        width:
+            155px;
+
+        height:
+            155px;
+    }
+
+
+    .country-information h2 {
+        font-size:
+            18px;
+    }
+
+
+    .un-bottom-decoration span {
+        width:
+            30px;
+    }
+
+
+    .un-bottom-decoration p {
+        font-size:
+            9px;
+
+        letter-spacing:
+            1px;
+    }
+}
+
+/* =========================================================
+   HISTORY PAGE VIDEO BACKGROUND
+   ========================================================= */
+
+body.history-page {
+    position: relative;
+
+    min-height: 100vh;
+
+    isolation: isolate;
+
+    background: #12052f;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.history-video-background {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    /* Places video behind everything */
+    z-index: -3;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   VIDEO OVERLAY
+   ========================================================= */
+
+.history-video-overlay {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+
+    /* Purple / Cyan transparent overlay */
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(0, 255, 255, 0.08),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(15, 4, 45, 0.65),
+            rgba(35, 8, 92, 0.50),
+            rgba(0, 35, 50, 0.55)
+        );
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE VIDEO
+   ========================================================= */
+
+body.history-page
+> *:not(.history-video-background):not(.history-video-overlay) {
+
+    position: relative;
+
+    z-index: 1;
+}
+
